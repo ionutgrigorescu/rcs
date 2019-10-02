@@ -1,0 +1,92 @@
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'majutsushi/tagbar'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'nvie/vim-flake8'
+Plugin 'pythoncomplete'
+Plugin 'valloric/youcompleteme'
+Plugin 'rdnetto/ycm-generator'
+Plugin 'w0rp/ale'
+Plugin 'fisadev/fixedtasklist.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'tmux-plugins/vim-tmux-focus-events'
+Plugin 'Yggdroot/indentLine'
+Plugin 'idanarye/vim-merginal'
+Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'luochen1990/rainbow'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'iberianpig/tig-explorer.vim'
+
+call vundle#end()
+filetype plugin indent on
+syntax on
+let g:instant_markdown_open_to_the_world = 1
+
+set shell=/bin/bash
+set ruler
+set tabstop=4 shiftwidth=4 expandtab
+set backspace=indent,eol,start
+set hlsearch
+
+"" map <F4> :TagbarToggle<CR>
+"" map <F3> :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
+"" map <F2> :TaskList<CR>
+
+autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
+
+
+"""" enable the theme
+set background=dark
+syntax enable
+
+
+let g:airline#extensions#ale#enabled = 1
+"" disable mode
+let g:airline_section_a = ''
+"" disable file encoding
+let g:airline_section_y = ''
+"" show only line and column
+let g:airline_section_z = '%l:%c'
+
+"" update tagbar faster
+set updatetime=500
+
+nmap <silent> <leader>aj :ALENext<cr>
+nmap <silent> <leader>ak :ALEPrevious<cr>
+
+let g:ansible_options = {'documentation_mapping': '<C-K>'}
+let g:loaded_matchparen=1
+let g:rainbow_active = 1
+
+set diffopt+=vertical
+
+" open tig with current file
+nnoremap <Leader>T :TigOpenCurrentFile<CR>
+
+" open tig with Project root path
+nnoremap <Leader>t :TigOpenProjectRootDir<CR>
+
+" open tig grep
+nnoremap <Leader>g :TigGrep<CR>
+
+" resume from last grep
+nnoremap <Leader>r :TigGrepResume<CR>
+
+" open tig grep with the selected word
+vnoremap <Leader>g y:TigGrep<Space><C-R>"<CR>
+
+" open tig grep with the word under the cursor
+nnoremap <Leader>cg :<C-u>:TigGrep<Space><C-R><C-W><CR>
+
+" open tig blame with current file
+nnoremap <Leader>b :TigBlame<CR>
+
