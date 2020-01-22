@@ -24,6 +24,8 @@ Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'luochen1990/rainbow'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'iberianpig/tig-explorer.vim'
+Plugin 'psf/black'
+
 
 call vundle#end()
 filetype plugin indent on
