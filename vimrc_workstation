@@ -56,7 +56,6 @@ Plugin 'iberianpig/tig-explorer.vim'
 ""Plugin 'ryanoasis/nerd-fonts'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plugin 'psf/black'
 
 
 
