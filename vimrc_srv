@@ -170,20 +170,6 @@ nnoremap <Leader>b :TigBlame<CR>
 "let g:webdevicons_enable = 1
 
 
-
-"let g:NERDTreeIndicatorMapCustom = {
-    "\ "Modified"  : "✹",
-    "\ "Staged"    : "✚",
-    "\ "Untracked" : "✭",
-    "\ "Renamed"   : "➜",
-    "\ "Unmerged"  : "═",
-    "\ "Deleted"   : "✖",
-    "\ "Dirty"     : "✗",
-    "\ "Clean"     : "✔︎",
-    "\ 'Ignored'   : '☒',
-    "\ "Unknown"   : "?"
-    "\ }
-
 "" https://github.com/tiagofumo/vim-nerdtree-syntax-highlight
 let s:blue = "689FB6"
 let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
