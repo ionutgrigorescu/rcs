@@ -67,8 +67,12 @@ Plug 'junegunn/fzf'
 
 Plug 'whiteinge/diffconflicts'
 
+" Paint lines and paragraphs
 Plug 'lpinilla/vim-codepainter'
 
+
+" Extend fugitive.vim to support Bitbucket URLs in :Gbrowse.
+Plug 'tommcdo/vim-fubitive'
 
 " All of your Plugs must be added before the following line
 " To ignore plugin indent changes, instead use:
@@ -210,4 +214,7 @@ let g:jedi#completions_enabled = 0
 let g:ale_fixers = {'python': ['isort', 'black', 'remove_trailing_lines', 'trim_whitespace']}
 " Set this variable to 1 to fix files when you save them.
 "" let g:ale_fix_on_save = 1
+
+" bitbucket GBrowse url
+"let g:fubitive_domain_pattern = 'code\.example\.com'
 
