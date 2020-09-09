@@ -74,18 +74,10 @@ Plug 'lpinilla/vim-codepainter'
 " Extend fugitive.vim to support Bitbucket URLs in :Gbrowse.
 Plug 'tommcdo/vim-fubitive'
 
-" Provides :Rg <search_string>
-Plug 'jremmen/vim-ripgrep'
-
-" Makes cwindow editable, so that we can do mass replace on :grep and :Rg
-Plug 'quickfix-reflector.vim'
 
 " All of your Plugs must be added before the following line
 " To ignore plugin indent changes, instead use:
 call plug#end()
-
-" Make Rg grep case insensitive
-let g:rg_command = 'rg --vimgrep -S'
 
 
 let g:deoplete#enable_at_startup = 1
