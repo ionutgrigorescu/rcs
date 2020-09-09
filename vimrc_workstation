@@ -85,7 +85,7 @@ Plug 'tommcdo/vim-fubitive'
 Plug 'jremmen/vim-ripgrep'
 
 " Makes cwindow editable, so that we can do mass replace on :grep and :Rg
-Plug 'vim-scripts/grep.vim'
+Plug 'quickfix-reflector.vim'
 
 
 " All of your Plugs must be added before the following line
