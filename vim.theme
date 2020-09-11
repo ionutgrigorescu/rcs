@@ -11,4 +11,6 @@ set background=dark
 "let g:rigel_airline = 1
 "let g:airline_theme = 'rigel'
 
-colorscheme base16-default-dark
+"colorscheme base16-default-dark
+
+colorscheme gruvbox
