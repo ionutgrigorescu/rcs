@@ -7,6 +7,11 @@ RUN mkdir -p /root/.ssh
 RUN chmod 700 /root/.ssh
 VOLUME /root/.ssh
 
+RUN dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+RUN dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+RUN dnf groupupdate -y core
+
 RUN dnf install -y vim python3 python3-devel python3-pip tmux curl git tig fzf wget bc ctags findutils
 
 RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
