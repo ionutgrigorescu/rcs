@@ -14,6 +14,8 @@ RUN dnf groupupdate -y core
 
 RUN dnf install -y vim python3 python3-devel python3-pip tmux curl git tig fzf wget bc ctags findutils bash-completion
 
+RUN dnf -y groupinstall "Development Tools"
+
 RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
