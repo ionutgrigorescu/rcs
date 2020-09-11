@@ -377,17 +377,20 @@ set signcolumn=yes
 "nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 
-colorscheme rigel
+" colorscheme rigel
 
-let g:rigel_airline = 1
-let g:airline_theme = 'rigel'
-set background=dark
+" let g:rigel_airline = 1
+" let g:airline_theme = 'rigel'
+" set background=dark
 
 "let g:airline_theme='one'
 "set background=light        " for the light version
 "let g:one_allow_italics = 1 " I love italic for comments
 "colorscheme one
 
+
+" push cwindow to the bottom, instead of opening in tagbar
+autocmd FileType qf wincmd J
 
 set pyxversion=3
 
@@ -398,3 +401,5 @@ let g:ale_fixers = {'python': ['isort', 'black', 'remove_trailing_lines', 'trim_
 
 " bitbucket GBrowse url
 " let g:fubitive_domain_pattern = 'code\.example\.com'
+"
+"
