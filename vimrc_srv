@@ -57,6 +57,7 @@ Plug 'jmcantrell/vim-virtualenv'
 
 Plug 'davidhalter/jedi-vim'
 Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-jedi'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 

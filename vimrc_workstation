@@ -65,6 +65,7 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'Shougo/deoplete.nvim'
 Plug 'davidhalter/jedi-vim'
+Plug 'zchee/deoplete-jedi'
 "" The next two plugins are for deoplete to work
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
