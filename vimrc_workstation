@@ -74,6 +74,7 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'chengzeyi/fzf-preview.vim'
 
 Plug 'whiteinge/diffconflicts'
 
@@ -402,5 +403,6 @@ let g:ale_fixers = {'python': ['isort', 'black', 'remove_trailing_lines', 'trim_
 
 " bitbucket GBrowse url
 " let g:fubitive_domain_pattern = 'code\.example\.com'
-"
-"
+
+command! -nargs=0 FT enew <bar> FZFTags
+
