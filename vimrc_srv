@@ -225,6 +225,7 @@ let g:ale_fixers = {'python': ['isort', 'black', 'remove_trailing_lines', 'trim_
 
 " push cwindow to the bottom, instead of opening in tagbar
 autocmd FileType qf wincmd J
+command! -nargs=0 FT enew <bar> FZFTags
 
 " bitbucket GBrowse url
 "let g:fubitive_domain_pattern = 'code\.example\.com'
