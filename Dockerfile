@@ -12,7 +12,7 @@ RUN dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonf
 
 RUN dnf groupupdate -y core
 
-RUN dnf install -y vim python3 python3-devel python3-pip tmux curl git tig fzf wget bc ctags findutils bash-completion krb5-devel
+RUN dnf install -y vim python3 python3-devel python3-pip tmux curl git tig fzf wget bc ctags findutils bash-completion krb5-devel cmake
 
 RUN dnf -y groupinstall "Development Tools"
 
