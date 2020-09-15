@@ -115,6 +115,7 @@ set tags=./tags
 set hlsearch
 set nofoldenable    "" disable folding
 set number
+set colorcolumn=89
 
 
 map <F4> :TagbarToggle<CR>
@@ -397,7 +398,8 @@ autocmd FileType qf wincmd J
 set pyxversion=3
 
 " ALE Python fixers
-let g:ale_fixers = {'python': ['isort', 'black', 'remove_trailing_lines', 'trim_whitespace']}
+let g:ale_fixers = {'python': ['isort', 'black', 'flake8', 'remove_trailing_lines', 'trim_whitespace']}
+let g:ale_python_flake8_options = ['--ignore=E501']
 " Set this variable to 1 to fix files when you save them.
 "" let g:ale_fix_on_save = 1
 
