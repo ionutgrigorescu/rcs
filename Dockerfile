@@ -19,6 +19,8 @@ RUN dnf -y groupinstall "Development Tools"
 RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+ADD pdbrc.py /root/.pdbrc.py
+
 RUN mkdir -p /root/.config
 ADD config_flake8 /root/.config/flake8
 
