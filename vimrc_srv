@@ -116,7 +116,7 @@ map <F2> :TaskList<CR>
 "" autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
 
 
-let g:doge_doc_standard_python = 'google'
+let g:doge_doc_standard_python = 'numpy'
 " Write google docstring. Must be on the def/class line
 let g:doge_mapping = "<Leader>X"
 "" let g:indent_guides_enable_on_vim_startup = 1
