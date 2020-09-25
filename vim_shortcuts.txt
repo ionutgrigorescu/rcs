@@ -19,7 +19,7 @@ Autocomple
 	ctrl+p -> the last one
 	https://stackabuse.com/vim-for-python-development/
 DocString -> https://github.com/kkoomen/vim-doge
-    \d -> create docstring
+    \x -> create docstring (the default is \d, but I use it for deoplete)
     Tab -> next todo in docstring
     Shift+Tab -> previous todo in docstring
 Git -> Vim Fugitive, Merginal
