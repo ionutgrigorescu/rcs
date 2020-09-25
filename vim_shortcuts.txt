@@ -1,0 +1,84 @@
+https://vimawesome.com/
+
+GBrowse:
+    :.GBrowse -> open current file and line on github, in browser
+    :GBrowse  -> open current file on github, in browser
+    :GBrowse!  -> show link to current file on github, in vim status bar and copy to clipboard
+
+DevDocs
+    K ->devdocs-under-cursor
+CTAGS
+	ctags -R .
+	ctrl+] -> goto definition
+	ctr;+o -> go back
+	ctrl-w } -> open the tag in the preview window.
+FLAKE8 check
+	F7
+Autocomple
+	ctrl+n -> next word in the current buffer
+	ctrl+p -> the last one
+	https://stackabuse.com/vim-for-python-development/
+DocString -> https://github.com/kkoomen/vim-doge
+    \d -> create docstring
+    Tab -> next todo in docstring
+    Shift+Tab -> previous todo in docstring
+Git -> Vim Fugitive, Merginal
+    Branches:
+        Merginal
+    Gread -> git checkout
+    Git diff:
+        Gstatus -> to see a list of changes
+        D -> on a changed file to see the diff
+        D ->on another changed file to replace the current diff with this one.
+        https://github.com/yanick/cheatsheets/blob/master/vim/fugitive.mkd
+    Diff and Confflicts:
+        diffput <buffer nr> -> puts the line on the other side
+        :ls -> show open buffers
+        http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/
+Buffers
+    \b -> show open buffers
+    ENTER -> to edit the selected buffer in the previous window
+    Ctrl+V -> to edit the selected buffer in a new vertical split
+    Crtl+S -> to edit the selected buffer in a new horizontal split
+    Ctrl+T to edit the selected buffer in a new tab page
+Isort
+    Isort
+Comment
+    \c+SPACE -> (on visual or just on lines) toggles comments
+Tab
+    >> -> insert on current line 
+    >  -> insert  on selected (visual) area
+    << ->untab current line
+    <  -> untab selected area
+Open Files
+    \t -> file list will appear
+Git Grep
+    :Ggrep Ctrl+R+Ctrl+W -> git grep word under cursor - fugitive
+    \cg -> git grep word under cursor - tig
+    e, <Ctrl-o>: edit on existing tab
+    <Ctrl-t>   : edit on new tab
+    <Ctrl-v>   : edit with vsplit window
+    <Ctrl-s>   : edit with split window
+    https://github.com/iberianpig/tig-explorer.vim
+Replace
+    :%s/foo/bar/g  -> Find each occurrence of 'foo' (in all lines), and replace it with 'bar'.
+    :s/foo/bar/g   -> Find each occurrence of 'foo' (in the current line only), and replace it with 'bar'.
+    :%s/foo/bar/gc -> Change each 'foo' to 'bar', but ask for confirmation first.
+Gbrowse
+    :.Gbrowse
+SpellCheck
+    :SpellCheck
+    z= -> show suggestions
+    zg -> add word to dict
+UpperCase and LowerCase
+    Visual select the text, then U for uppercase or u for lowercase. To swap all casing in a visual selection, press ~ (tilde).
+
+Multiple Cursors:
+    https://github.com/mg979/vim-visual-multi
+
+https://blog.jez.io/vim-as-an-ide/
+https://vimawesome.com
+https://github.com/fisadev/fisa-vim-config
+https://vimawesome.com/plugin/fugitive-vim  -- git
+https://github.com/skanehira/docker.vim -- docker
+
