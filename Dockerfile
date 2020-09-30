@@ -39,6 +39,13 @@ RUN cat /root/.vim/vim.theme >>/root/.vimrc
 ADD tmux.conf /root/.tmux.conf
 ADD bashrc /root/.bashrc
 
+# This will fail unless domain.txt exists.
+# This will remind the user to either create and empty file if not needed
+# or create a file with:
+# search desired.domain
+ADD domain.txt /root/
+RUN cat /root/domain.txt >>/etc/resolv.conf
+
 WORKDIR /work
 
 CMD tmux
