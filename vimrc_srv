@@ -230,6 +230,9 @@ let g:ale_python_flake8_options = '--ignore=E501'
 autocmd FileType qf wincmd J
 command! -nargs=0 FT enew <bar> FZFTags
 
+#Jenkinsfile highlighting
+au BufNewFile,BufRead Jenkinsfile setf groovy
+
 " bitbucket GBrowse url
 "let g:fubitive_domain_pattern = 'code\.example\.com'
 
