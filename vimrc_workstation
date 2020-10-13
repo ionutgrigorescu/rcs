@@ -408,5 +408,5 @@ let g:ale_python_flake8_options = '--ignore=E501'
 
 command! -nargs=0 FT enew <bar> FZFTags
 
-#Jenkinsfile highlighting
+"Jenkinsfile highlighting
 au BufNewFile,BufRead Jenkinsfile setf groovy
