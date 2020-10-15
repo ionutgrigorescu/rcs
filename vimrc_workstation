@@ -34,7 +34,7 @@ Plug 'nvie/vim-flake8'
 "" Plug 'valloric/youcompleteme'
 "" Plug 'rdnetto/ycm-generator'
 Plug 'suan/vim-instant-markdown', {'rtp': 'after'}
-Plug 'kkoomen/vim-doge'
+Plug 'kkoomen/vim-doge', { 'tag': 'v2.8.0' }
 Plug 'dense-analysis/ale'
 Plug 'fisadev/fixedtasklist.vim'
 Plug 'nathanaelkane/vim-indent-guides'
