@@ -236,3 +236,7 @@ au BufNewFile,BufRead Jenkinsfile setf groovy
 " bitbucket GBrowse url
 "let g:fubitive_domain_pattern = 'code\.example\.com'
 
+
+autocmd InsertEnter * hi clear LineNr | hi LineNr ctermfg=blue
+
+autocmd InsertLeave * hi clear LineNr | hi LineNr ctermfg=green

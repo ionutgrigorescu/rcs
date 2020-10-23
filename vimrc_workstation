@@ -410,3 +410,7 @@ command! -nargs=0 FT enew <bar> FZFTags
 
 "Jenkinsfile highlighting
 au BufNewFile,BufRead Jenkinsfile setf groovy
+
+autocmd InsertEnter * hi clear LineNr | hi LineNr ctermfg=blue
+
+autocmd InsertLeave * hi clear LineNr | hi LineNr ctermfg=green
