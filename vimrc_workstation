@@ -116,7 +116,7 @@ set hlsearch
 set nofoldenable    "" disable folding
 set number
 set colorcolumn=89
-
+set cursorline
 
 map <F4> :TagbarToggle<CR>
 map <F3> :NERDTreeToggle<CR>
