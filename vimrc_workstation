@@ -415,5 +415,8 @@ autocmd InsertEnter * hi clear LineNr | hi LineNr ctermfg=blue
 
 autocmd InsertLeave * hi clear LineNr | hi LineNr ctermfg=green
 
-" press \y to put yanked text into xclip
-vnoremap <silent><Leader>y "yy <Bar> :call system('xclip', @y)<CR>
+"" WSL
+" copy (write) highlighted text to .vimbuffer
+"vmap <C-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| clip.exe <CR><CR>
+" paste from buffer
+"map <C-v> :r ~/.vimbuffer<CR>
