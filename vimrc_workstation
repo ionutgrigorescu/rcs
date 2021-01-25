@@ -420,3 +420,5 @@ autocmd InsertLeave * hi clear LineNr | hi LineNr ctermfg=green
 "vmap <C-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| clip.exe <CR><CR>
 " paste from buffer
 "map <C-v> :r ~/.vimbuffer<CR>
+
+:set mouse=a
