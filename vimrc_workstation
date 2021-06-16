@@ -418,3 +418,5 @@ autocmd InsertLeave * hi clear LineNr | hi LineNr ctermfg=green
 "map <C-v> :r ~/.vimbuffer<CR>
 
 :set mouse=a
+
+set redrawtime=10000
