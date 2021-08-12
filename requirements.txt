@@ -68,7 +68,7 @@ py==1.9.0
 pycodestyle==2.6.0
 pycparser==2.20
 pyflakes==2.2.0
-Pygments==2.6.1
+Pygments==2.7.4
 pynvim==0.4.1
 pyparsing==2.4.7
 pyrepl==0.9.0
