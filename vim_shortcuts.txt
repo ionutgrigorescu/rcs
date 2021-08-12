@@ -75,6 +75,9 @@ UpperCase and LowerCase
 
 Multiple Cursors:
     https://github.com/mg979/vim-visual-multi
+    
+Code folding:
+    za -> fold/unfold
 
 https://blog.jez.io/vim-as-an-ide/
 https://vimawesome.com
