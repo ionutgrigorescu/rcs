@@ -28,7 +28,7 @@ Plug 'xolox/vim-misc'
 Plug 'airblade/vim-gitgutter'
 Plug 'nvie/vim-flake8'
 
- Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 
 Plug 'dense-analysis/ale'
 Plug 'fisadev/fixedtasklist.vim'
@@ -36,6 +36,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rigellute/rigel'
 Plug 'rakr/vim-one'
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'projekt0n/github-nvim-theme'
 
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline'
@@ -43,9 +44,9 @@ Plug 'chase/vim-ansible-yaml'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'idanarye/vim-merginal'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'fisadev/vim-isort'
+"Plug 'fisadev/vim-isort'
 "" Plug 'python/black'
-Plug 'xolox/vim-session'
+"Plug 'xolox/vim-session'
 Plug 'luochen1990/rainbow'
 Plug 'scrooloose/nerdcommenter'
 Plug 'iberianpig/tig-explorer.vim'
@@ -68,15 +69,15 @@ Plug 'zchee/deoplete-jedi'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 
-Plug 'jremmen/vim-ripgrep'
+"Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'chengzeyi/fzf-preview.vim'
 
 Plug 'whiteinge/diffconflicts'
 
-Plug 'mileszs/ack.vim'
-Plug 'yssl/VIntSearch'
+"Plug 'mileszs/ack.vim'
+"Plug 'yssl/VIntSearch'
 
 Plug 'pixelneo/vim-python-docstring'
 
@@ -91,7 +92,7 @@ Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 Plug 'erietz/vim-terminator'
 
 
-Plug 'iqxd/vim-mine-sweeping'
+"Plug 'iqxd/vim-mine-sweeping'
 
 
 " All of your Plugs must be added before the following line
@@ -115,6 +116,7 @@ let g:jedi#completions_enabled = 0
 
 filetype plugin on
 let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
+let g:instant_markdown_port = 8800
 
 
 syntax on
