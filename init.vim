@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
 " plugin on GitHub repo
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plug 'L9'
@@ -91,13 +92,15 @@ Plug 'jpalardy/vim-slime', { 'for': 'python' }
 Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 Plug 'erietz/vim-terminator'
 
+Plug 'Xuyuanp/scrollbar.nvim'
 
 "Plug 'iqxd/vim-mine-sweeping'
-
+"Plug 'dansomething/vim-hackernews'
 
 " All of your Plugs must be added before the following line
 " To ignore plugin indent changes, instead use:
 call plug#end()
+
 
 "
 " Brief help
@@ -177,6 +180,8 @@ let g:airline_section_z = '%l:%c'
 
 " update tagbar faster
 set updatetime=500
+
+"let g:tagbar_position = 'topleft vertical'
 
 
 nmap <silent> <leader>aj :ALENext<cr>
@@ -266,20 +271,20 @@ let g:NERDDefaultAlign = 'left'
 "
 let g:fubitive_domain_pattern = 'bitbucket-p\.internal\.epo\.org'
 
-"colorscheme rigel
+colorscheme rigel
 
-"let g:rigel_airline = 1
-"let g:airline_theme = 'papercolor'
-"set background=dark
+let g:rigel_airline = 1
+let g:airline_theme = 'papercolor'
+set background=dark
 
 "let g:airline_theme='one'
 "set background=light        " for the light version
 "let g:one_allow_italics = 1 " I love italic for comments
 "colorscheme one
 
-let g:airline_theme = 'papercolor'
-set background=light
-colorscheme PaperColor
+"let g:airline_theme = 'papercolor'
+"set background=light
+"colorscheme PaperColor
 
 set pyxversion=3
 
@@ -387,3 +392,10 @@ nmap <F10> :IPythonCellInsertBelow<CR>a
 imap <F9> <C-o>:IPythonCellInsertAbove<CR>
 imap <F10> <C-o>:IPythonCellInsertBelow<CR>
 
+
+augroup ScrollbarInit
+  autocmd!
+  autocmd WinScrolled,VimResized,QuitPre * silent! lua require('scrollbar').show()
+  autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
+  autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
+augroup end
