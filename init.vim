@@ -97,6 +97,8 @@ Plug 'Xuyuanp/scrollbar.nvim'
 "Plug 'iqxd/vim-mine-sweeping'
 "Plug 'dansomething/vim-hackernews'
 
+Plug 'blueyed/vim-diminactive'
+
 " All of your Plugs must be added before the following line
 " To ignore plugin indent changes, instead use:
 call plug#end()
