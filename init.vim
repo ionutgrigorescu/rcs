@@ -322,7 +322,7 @@ map vtiv :vnew<CR>:terminal<CR>i. venv/bin/activate<CR>ipython<CR><C-\><C-n>
 map vtih :new<CR>:terminal<CR>i. venv/bin/activate<CR>ipython<CR><C-\><C-n>
 map vtit :tabnew<CR>:terminal<CR>i. venv/bin/activate<CR>ipython<CR><C-\><C-n>
 
-map <leader>ipdb iimport ipdb; ipdb.set_trace(context=10)<CR><ESC>
+map <leader>ipdb Oimport ipdb; ipdb.set_trace(context=10)<ESC>
 
 "------------------------------------------------------------------------------
 " slime configuration 
