@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plug 'L9'
@@ -23,7 +24,9 @@ Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Plug 'ascenator/L9', {'name': 'newL9'}
 
 Plug 'scrooloose/nerdtree'
-Plug 'majutsushi/tagbar'
+"Plug 'majutsushi/tagbar'
+Plug 'simrat39/symbols-outline.nvim'
+
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'airblade/vim-gitgutter'
@@ -63,12 +66,21 @@ Plug 'integralist/vim-mypy'
 Plug 'jmcantrell/vim-virtualenv'
 "" Plug 'neoclide/coc.nvim', {'branch': 'master'}
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'Shougo/deoplete.nvim'
-Plug 'davidhalter/jedi-vim'
-Plug 'zchee/deoplete-jedi'
-"" The next two plugins are for deoplete to work
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+"Plug 'Shougo/deoplete.nvim'
+"Plug 'davidhalter/jedi-vim'
+"Plug 'zchee/deoplete-jedi'
+""" The next two plugins are for deoplete to work
+"Plug 'roxma/nvim-yarp'
+"Plug 'roxma/vim-hug-neovim-rpc'
 
 "Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -84,7 +96,7 @@ Plug 'pixelneo/vim-python-docstring'
 
 Plug 'martinda/Jenkinsfile-vim-syntax'
 
-Plug 'tommcdo/vim-fubitive'
+"Plug 'tommcdo/vim-fubitive'
 
 Plug 'julienr/vim-cellmode'
 Plug 'jpalardy/vim-slime'
@@ -92,12 +104,19 @@ Plug 'jpalardy/vim-slime', { 'for': 'python' }
 Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 Plug 'erietz/vim-terminator'
 
-Plug 'Xuyuanp/scrollbar.nvim'
+Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'edluffy/hologram.nvim'
 
+
+Plug 'xuhdev/vim-latex-live-preview'
+
+"Plug 'luk400/vim-jukit' 
+
+"Plug 'dyng/ctrlsf.vim'
+
+"Plug 'Xuyuanp/scrollbar.nvim'
 "Plug 'iqxd/vim-mine-sweeping'
 "Plug 'dansomething/vim-hackernews'
-
-Plug 'blueyed/vim-diminactive'
 
 " All of your Plugs must be added before the following line
 " To ignore plugin indent changes, instead use:
@@ -136,28 +155,26 @@ set number
 set colorcolumn=89
 set cursorline
 
-"set nofoldenable    "" disable folding
-set foldenable 
-set foldmethod=manual
+set nofoldenable    "" disable folding
+"set foldenable 
+"set foldmethod=manual
 
 "Indenting
 vnoremap < <gv^
 vnoremap > >gv^
 
-map <F4> :TagbarToggle<CR>
-map tb :TagbarToggle<CR>
-map <F3> :NERDTreeToggle<CR>
+map so :SymbolsOutline<CR>
 map nf :NERDTreeFind<CR>
 map nt :NERDTreeToggle<CR>
-map <F2> :TaskList<CR>
+"map <F2> :TaskList<CR>
 map tl :TaskList<CR>
 
 let g:NERDTreeNodeDelimiter = "\u00a0"
 "map <F3> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 "nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+"nnoremap <C-t> :NERDTreeToggle<CR>
+"nnoremap <C-f> :NERDTreeFind<CR>
 
 "" autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
 
@@ -181,7 +198,7 @@ let g:airline_section_y = ''
 let g:airline_section_z = '%l:%c'
 
 " update tagbar faster
-set updatetime=500
+"set updatetime=500
 
 "let g:tagbar_position = 'topleft vertical'
 
@@ -271,7 +288,7 @@ let g:NERDDefaultAlign = 'left'
 
 "" let g:virtualenv_directory = './venv'
 "
-let g:fubitive_domain_pattern = 'bitbucket-p\.internal\.epo\.org'
+"let g:fubitive_domain_pattern = 'bitbucket-p\.internal\.epo\.org'
 
 colorscheme rigel
 
@@ -340,64 +357,226 @@ let g:slime_python_ipython = 1
 
 let g:slime_dont_ask_default = 0
 
-"------------------------------------------------------------------------------
-" ipython-cell configuration
-"------------------------------------------------------------------------------
-" Keyboard mappings. <Leader> is \ (backslash) by default
+autocmd TermOpen * setlocal nonumber norelativenumber
 
-" map <Leader>s to start IPython
-nnoremap <Leader>s :SlimeSend1 ipython --matplotlib<CR>
-
-" map <Leader>r to run script
-nnoremap <Leader>r :IPythonCellRun<CR>
-
-" map <Leader>R to run script and time the execution
-nnoremap <Leader>R :IPythonCellRunTime<CR>
-
-" map <Leader>c to execute the current cell
-nnoremap <Leader>c :IPythonCellExecuteCell<CR>
-
-" map <Leader>C to execute the current cell and jump to the next cell
-nnoremap <Leader>C :IPythonCellExecuteCellJump<CR>
-
-" map <Leader>l to clear IPython screen
-nnoremap <Leader>l :IPythonCellClear<CR>
-
-" map <Leader>x to close all Matplotlib figure windows
-nnoremap <Leader>x :IPythonCellClose<CR>
-
-" map [c and ]c to jump to the previous and next cell header
-nnoremap [c :IPythonCellPrevCell<CR>
-nnoremap ]c :IPythonCellNextCell<CR>
-
-" map <Leader>h to send the current line or current selection to IPython
-nmap <Leader>h <Plug>SlimeLineSend
-xmap <Leader>h <Plug>SlimeRegionSend
-
-" map <Leader>p to run the previous command
-nnoremap <Leader>p :IPythonCellPrevCommand<CR>
-
-" map <Leader>Q to restart ipython
-nnoremap <Leader>Q :IPythonCellRestart<CR>
-
-" map <Leader>d to start debug mode
-nnoremap <Leader>D :SlimeSend1 %debug<CR>
-
-" map <Leader>q to exit debug mode or IPython
-nnoremap <Leader>q :SlimeSend1 exit<CR>
-
-" map <F9> and <F10> to insert a cell header tag above/below and enter insert mode
-nmap <F9> :IPythonCellInsertAbove<CR>a
-nmap <F10> :IPythonCellInsertBelow<CR>a
-
-" also make <F9> and <F10> work in insert mode
-imap <F9> <C-o>:IPythonCellInsertAbove<CR>
-imap <F10> <C-o>:IPythonCellInsertBelow<CR>
+let g:ale_linters = {
+    \ 'sh': ['language_server'],
+    \ }
 
 
-augroup ScrollbarInit
-  autocmd!
-  autocmd WinScrolled,VimResized,QuitPre * silent! lua require('scrollbar').show()
-  autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
-  autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
-augroup end
+autocmd Filetype tex setl updatetime=10
+let g:livepreview_previewer = 'open -a Preview'
+
+
+""" LSP
+lua << EOF
+-- Mappings.
+local opts = { noremap=true, silent=true }
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    local bufopts = { noremap=true, silent=true, buffer=bufnr }
+    vim.keymap.set('n', '<leader>K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', '<leader>i', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', '<leader>r', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', '<leader>D', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', '<space>K', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', '<leader>t', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+end
+
+-- this part is telling Neovim to use the lsp server
+local servers = { 'pyright', 'tsserver' }
+for _, lsp in pairs(servers) do
+    require('lspconfig')[lsp].setup {
+        on_attach = on_attach,
+        flags = {
+          debounce_text_changes = 150,
+        }
+    }
+end
+
+-- this is for diagnositcs signs on the line number column
+-- use this to beautify the plain E W signs to more fun ones
+-- !important nerdfonts needs to be setup for this to work in your terminal
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " } 
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
+end
+
+
+-- Set up nvim-cmp.
+  local cmp = require'cmp'
+
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      end,
+    },
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Set configuration for specific filetype.
+  cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+      { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+  -- Set up lspconfig.
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+  -- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
+  --   capabilities = capabilities
+  -- }
+  -- local servers = { 'pyright', 'tsserver' }
+  require('lspconfig')['pyright'].setup {
+    capabilities = capabilities
+  }
+  require('lspconfig')['tsserver'].setup {
+    capabilities = capabilities
+  }
+
+
+
+  -- LSP Tagbar alternative
+
+  local opts = {
+    highlight_hovered_item = true,
+    show_guides = true,
+    auto_preview = false,
+    position = 'right',
+    relative_width = true,
+    width = 25,
+    auto_close = false,
+    show_numbers = false,
+    show_relative_numbers = false,
+    show_symbol_details = true,
+    preview_bg_highlight = 'Pmenu',
+    autofold_depth = nil,
+    auto_unfold_hover = true,
+    fold_markers = { '', '' },
+    wrap = false,
+    keymaps = { -- These keymaps can be a string or a table for multiple keys
+      close = {"q"},
+      goto_location = "<Cr>",
+      focus_location = "o",
+      hover_symbol = "<C-space>",
+      toggle_preview = "<C-p>",
+      rename_symbol = "r",
+      code_actions = "a",
+      fold = "h",
+      unfold = "l",
+      fold_all = "W",
+      unfold_all = "E",
+      fold_reset = "R",
+    },
+    lsp_blacklist = {},
+    symbol_blacklist = {},
+    symbols = {
+      File = { icon = "", hl = "@text.uri" },
+      Module = { icon = "", hl = "@namespace" },
+      Namespace = { icon = "", hl = "@namespace" },
+      Package = { icon = "", hl = "@namespace" },
+      Class = { icon = "𝓒", hl = "@type" },
+      Method = { icon = "ƒ", hl = "@method" },
+      Property = { icon = "", hl = "@method" },
+      Field = { icon = "", hl = "@field" },
+      Constructor = { icon = "", hl = "@constructor" },
+      Enum = { icon = "ℰ", hl = "@type" },
+      Interface = { icon = "ﰮ", hl = "@type" },
+      Function = { icon = "", hl = "@function" },
+      Variable = { icon = "", hl = "@constant" },
+      Constant = { icon = "", hl = "@constant" },
+      String = { icon = "𝓐", hl = "@string" },
+      Number = { icon = "#", hl = "@number" },
+      Boolean = { icon = "⊨", hl = "@boolean" },
+      Array = { icon = "", hl = "@constant" },
+      Object = { icon = "⦿", hl = "@type" },
+      Key = { icon = "🔐", hl = "@type" },
+      Null = { icon = "NULL", hl = "@type" },
+      EnumMember = { icon = "", hl = "@field" },
+      Struct = { icon = "𝓢", hl = "@type" },
+      Event = { icon = "🗲", hl = "@type" },
+      Operator = { icon = "+", hl = "@operator" },
+      TypeParameter = { icon = "𝙏", hl = "@parameter" },
+      Component = { icon = "", hl = "@function" },
+      Fragment = { icon = "", hl = "@constant" },
+    },
+  }
+
+  require("symbols-outline").setup(opts)
+
+  local custom_lsp_attach = function(_, bufnr)
+    print('LSP attached')
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  end
+
+  require'lspconfig'.yamlls.setup {
+    settings = {
+      yaml = {
+        schemaStore = {
+          url = "https://www.schemastore.org/api/json/catalog.json",
+          enable = true,
+        }
+      }
+    },
+    on_attach = custom_lsp_attach
+  }
+
+EOF
