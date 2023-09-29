@@ -6,7 +6,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plug 'L9'
@@ -24,7 +23,8 @@ Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Plug 'ascenator/L9', {'name': 'newL9'}
 
 Plug 'scrooloose/nerdtree'
-"Plug 'majutsushi/tagbar'
+
+Plug 'preservim/tagbar'
 Plug 'simrat39/symbols-outline.nvim'
 
 Plug 'xolox/vim-easytags'
@@ -32,7 +32,7 @@ Plug 'xolox/vim-misc'
 Plug 'airblade/vim-gitgutter'
 Plug 'nvie/vim-flake8'
 
-Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+"" Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 
 Plug 'dense-analysis/ale'
 Plug 'fisadev/fixedtasklist.vim'
@@ -50,7 +50,7 @@ Plug 'idanarye/vim-merginal'
 Plug 'jeetsukumaran/vim-buffergator'
 "Plug 'fisadev/vim-isort'
 "" Plug 'python/black'
-"Plug 'xolox/vim-session'
+Plug 'xolox/vim-session'
 Plug 'luochen1990/rainbow'
 Plug 'scrooloose/nerdcommenter'
 Plug 'iberianpig/tig-explorer.vim'
@@ -66,35 +66,25 @@ Plug 'integralist/vim-mypy'
 Plug 'jmcantrell/vim-virtualenv'
 "" Plug 'neoclide/coc.nvim', {'branch': 'master'}
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-
-
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-
 "Plug 'Shougo/deoplete.nvim'
 Plug 'davidhalter/jedi-vim'
 "Plug 'zchee/deoplete-jedi'
 """ The next two plugins are for deoplete to work
 "Plug 'roxma/nvim-yarp'
 "Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/vim-vsnip'
+
 
 "Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'chengzeyi/fzf-preview.vim'
-Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
-" optional for icon support
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
-" or                                , { 'branch': '0.1.x' }
-
-
-
 
 Plug 'whiteinge/diffconflicts'
 
@@ -113,21 +103,27 @@ Plug 'jpalardy/vim-slime', { 'for': 'python' }
 Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 Plug 'erietz/vim-terminator'
 
-Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'edluffy/hologram.nvim'
 
+Plug 'Xuyuanp/scrollbar.nvim'
 
-Plug 'xuhdev/vim-latex-live-preview'
-
-"Plug 'luk400/vim-jukit' 
-
-"Plug 'dyng/ctrlsf.vim'
-
-"Plug 'Xuyuanp/scrollbar.nvim'
 "Plug 'iqxd/vim-mine-sweeping'
 "Plug 'dansomething/vim-hackernews'
 
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'jsit/toast.vim'
 
+Plug 'dyng/ctrlsf.vim'
+Plug 'nvim-lua/plenary.nvim'
+
+"Plug 'WhiteBlackGoose/magma-nvim-goose', { 'do': ':UpdateRemotePlugins' }
+"Plug 'hrsh7th/nvim-cmp'
+"Plug 'lkhphuc/jupyter-kernel.nvim'
+
+Plug 'yasuhiroki/github-actions-yaml.vim'
+
+"Plug 'luk400/vim-jukit' 
+" or                                , { 'branch': '0.1.x' }
 " All of your Plugs must be added before the following line
 " To ignore plugin indent changes, instead use:
 call plug#end()
@@ -139,7 +135,7 @@ call plug#end()
 " :PlugInstall    - installs plugins; append `!` to update or just :PlugUpdate
 " :PlugSearch foo - searches for foo; append `!` to refresh local cache
 " :PlugClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-let g:python_host_prog = '/usr/bin/python' 
+let g:python_host_prog = '/usr/bin/python3' 
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -165,28 +161,33 @@ set number
 set colorcolumn=89
 set cursorline
 
-set nofoldenable    "" disable folding
-"set foldenable 
-"set foldmethod=manual
+"set nofoldenable    "" disable folding
+set foldenable 
+set foldmethod=manual
+
+"" Terminal no line numbers
+autocmd TermOpen * setlocal nonumber norelativenumber
 
 "Indenting
 vnoremap < <gv^
 vnoremap > >gv^
 
-map so :SymbolsOutline<CR>
-map nf :NERDTreeFind<CR>
-map nt :NERDTreeToggle<CR>
-"map <F2> :TaskList<CR>
-map tl :TaskList<CR>
 nnoremap <C-h> :noh<CR>
 
+map tb :TagbarToggle<CR>
+map so :SymbolsOutline<CR>
+map <F3> :NERDTreeToggle<CR>
+map nf :NERDTreeFind<CR>
+map nt :NERDTreeToggle<CR>
+map <F2> :TaskList<CR>
+map tl :TaskList<CR>
 
 let g:NERDTreeNodeDelimiter = "\u00a0"
 "map <F3> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 "nnoremap <leader>n :NERDTreeFocus<CR>
-"nnoremap <C-t> :NERDTreeToggle<CR>
-"nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 "" autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
 
@@ -215,6 +216,11 @@ let g:airline_section_z = '%l:%c'
 "let g:tagbar_position = 'topleft vertical'
 
 
+nmap <silent> <leader>aj :ALENext<cr>
+nmap <silent> <leader>ak :ALEPrevious<cr>
+
+let g:ansible_options = {'documentation_mapping': '<C-K>'}
+
 let g:loaded_matchparen=1
 let g:rainbow_active = 1
 
@@ -223,6 +229,28 @@ let g:session_autosave = 'no'
 
 "" Gdiff vertical
 set diffopt+=vertical
+
+
+"" open tig with current file
+nnoremap <Leader>T :TigOpenCurrentFile<CR>
+
+"" open tig with Project root path
+nnoremap <Leader>t :TigOpenProjectRootDir<CR>
+
+"" open tig grep
+nnoremap <Leader>g :TigGrep<CR>
+
+"" resume from last grep
+nnoremap <Leader>r :TigGrepResume<CR>
+
+"" open tig grep with the selected word
+vnoremap <Leader>g y:TigGrep<Space><C-R>"<CR>
+
+"" open tig grep with the word under the cursor
+nnoremap <Leader>cg :<C-u>:TigGrep<Space><C-R><C-W><CR>
+
+"" open tig blame with current file
+nnoremap <Leader>b :TigBlame<CR>
 
 set encoding=UTF-8
 "" set guifont=DroidSansMono\ Nerd\ Font\ 10
@@ -236,18 +264,18 @@ let g:webdevicons_enable = 1
 
 
 
-"let g:NERDTreeIndicatorMapCustom = {
-    "\ "Modified"  : "✹",
-    "\ "Staged"    : "✚",
-    "\ "Untracked" : "✭",
-    "\ "Renamed"   : "➜",
-    "\ "Unmerged"  : "═",
-    "\ "Deleted"   : "✖",
-    "\ "Dirty"     : "✗",
-    "\ "Clean"     : "✔︎",
-    "\ 'Ignored'   : '☒',
-    "\ "Unknown"   : "?"
-    "\ }
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 
 "" https://github.com/tiagofumo/vim-nerdtree-syntax-highlight
 let s:blue = "689FB6"
@@ -255,7 +283,7 @@ let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreeExtensionHighlightColor['py'] = s:blue " sets the color of css files to blue
 
 "" devdocs.io
-nmap KK <Plug>(devdocs-under-cursor-all)
+nmap K <Plug>(devdocs-under-cursor-all)
 
 ""let g:instant_markdown_open_to_the_world = 1
 ""let g:instant_markdown_autoscroll = 0
@@ -273,13 +301,20 @@ let g:NERDDefaultAlign = 'left'
 
 "" let g:virtualenv_directory = './venv'
 "
-"let g:fubitive_domain_pattern = 'bitbucket-p\.internal\.epo\.org'
+let g:fubitive_domain_pattern = 'bitbucket-p\.internal\.epo\.org'
+"colorscheme dracula
+"let g:dracula_airline = 1
 
 colorscheme rigel
-
 let g:rigel_airline = 1
 let g:airline_theme = 'papercolor'
 set background=dark
+"colorscheme toast
+"let g:airline_theme = 'dracula'
+
+
+"colorscheme dracula
+"let g:airline_theme = 'dracula'
 
 "let g:airline_theme='one'
 "set background=light        " for the light version
@@ -324,7 +359,7 @@ map vtiv :vnew<CR>:terminal<CR>i. venv/bin/activate<CR>ipython<CR><C-\><C-n>
 map vtih :new<CR>:terminal<CR>i. venv/bin/activate<CR>ipython<CR><C-\><C-n>
 map vtit :tabnew<CR>:terminal<CR>i. venv/bin/activate<CR>ipython<CR><C-\><C-n>
 
-map <leader>ipdb Oimport ipdb; ipdb.set_trace(context=10)<ESC>
+map <leader>ipdb ^iimport ipdb; ipdb.set_trace(context=10)<CR><ESC>
 
 "------------------------------------------------------------------------------
 " slime configuration 
@@ -342,15 +377,78 @@ let g:slime_python_ipython = 1
 
 let g:slime_dont_ask_default = 0
 
-autocmd TermOpen * setlocal nonumber norelativenumber
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-let g:ale_linters = {
-    \ 'sh': ['language_server'],
-    \ }
+
+" Use the ack tool as the backend
+let g:ctrlsf_backend = 'ack'
+
+"let g:magma_automatically_open_output = v:true
+"let g:magma_image_provider = "ueberzug"
+
+"nnoremap <silent><expr> <LocalLeader>m  :MagmaEvaluateOperator<CR>
+"nnoremap <silent>       <LocalLeader>ml :MagmaEvaluateLine<CR>
+"xnoremap <silent>       <LocalLeader>m  :<C-u>MagmaEvaluateVisual<CR>
+"nnoremap <silent>       <LocalLeader>mc :MagmaReevaluateCell<CR>
+"nnoremap <silent>       <LocalLeader>md :MagmaDelete<CR>
+"nnoremap <silent>       <LocalLeader>mo :MagmaShowOutput<CR>
+
+"lua <<EOF
+"local cmp = require'cmp'
+"cmp.setup({
+"    sources = cmp.config.sources({
+"      { name = 'jupyter' },
+"    }, {
+"      { name = 'buffer' },
+"    })
+"})
+
+"function MagmaInitPython()
+"    vim.cmd[[
+"    :MagmaInit python3
+"    :MagmaEvaluateArgument a=5
+"    ]]
+"end
+
+"vim.cmd[[
+":command MagmaInitPython lua MagmaInitPython()
+"]]
+
+"EOF
 
 
-autocmd Filetype tex setl updatetime=10
-let g:livepreview_previewer = 'open -a Preview'
+
+"let g:jukit_terminal = 'nvimterm'
+"let g:jukit_terminal = 'tmux'
+"let g:jukit_layout = {
+"    \'split': 'horizontal',
+"    \'p1': 0.6, 
+"    \'val': [
+"        \'file_content',
+"        \{
+"            \'split': 'vertical',
+"            \'p1': 0.6,
+"            \'val': ['output', 'output_history']
+"        \}
+"    \]
+"\}
+let g:clipboard = {
+  \   'name': 'WslClipboard',
+  \   'copy': {
+  \      '+': 'clip.exe',
+  \      '*': 'clip.exe',
+  \    },
+  \   'paste': {
+  \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  \   },
+  \   'cache_enabled': 0,
+  \ }
+
 
 
 """ LSP
@@ -364,19 +462,18 @@ local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
-    vim.keymap.set('n', '<C-K>', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', '<leader>K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', '<leader>i', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', '<leader>r', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', '<leader>D', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', '<space>K', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', '<space>t', vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', '<space>fm', vim.lsp.buf.formatting, bufopts)
-    vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '<leader>t', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 end
@@ -406,6 +503,9 @@ end
   local cmp = require'cmp'
 
   cmp.setup({
+    completion = {
+      keyword_length = 3,  -- Add this line
+    },
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
@@ -461,7 +561,11 @@ end
       { name = 'path' }
     }, {
       { name = 'cmdline' }
-    })
+    }),
+    completion = {
+        completeopt = 'menu,menuone,noinsert',
+        keyword_length = 3, -- Minimum keyword length to trigger completion
+      },
   })
 
   -- Set up lspconfig.
@@ -477,8 +581,6 @@ end
   require('lspconfig')['tsserver'].setup {
     capabilities = capabilities
   }
-
-
 
   -- LSP Tagbar alternative
 
@@ -499,17 +601,17 @@ end
     fold_markers = { '', '' },
     wrap = false,
     keymaps = { -- These keymaps can be a string or a table for multiple keys
-      close = {"q"},
+      close = "q",
       goto_location = "<Cr>",
       focus_location = "o",
       hover_symbol = "<C-space>",
       toggle_preview = "<C-p>",
       rename_symbol = "r",
       code_actions = "a",
-      fold = "h",
-      unfold = "l",
-      fold_all = "W",
-      unfold_all = "E",
+      fold = "-",
+      unfold = "+",
+      fold_all = "[",
+      unfold_all = "]",
       fold_reset = "R",
     },
     lsp_blacklist = {},
@@ -548,6 +650,7 @@ end
 
   require("symbols-outline").setup(opts)
 
+
   local custom_lsp_attach = function(_, bufnr)
     print('LSP attached')
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -566,3 +669,6 @@ end
   }
 
 EOF
+
+
+
