@@ -324,20 +324,26 @@ local Terminal = require('toggleterm.terminal').Terminal
 local pi_agent = Terminal:new({ 
   cmd = "pi", 
   hidden = true, 
+  -- We set direction here, but we will override size in the toggle call
   direction = "vertical",
+  -- Set persist_size to false so your '45' is always the priority
+  persist_size = false, 
   on_open = function(term)
-    -- If opening vertically, move it to the far left (NERDTree style)
     if term.direction == "vertical" then
+      -- 1. Move to the far left (NERDTree style)
       vim.cmd("wincmd H")
+      -- 2. FORCE the width to 45 columns immediately after the move
+      vim.cmd("vertical resize 45")
     end
-    -- Terminal keybindings
+    -- Keep your escape binding
     vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<esc>", [[<C-\><C-n>]], {noremap = true, silent = true})
   end,
 })
 
 -- Functions to toggle directions
 function _pi_toggle_sidebar()
-  pi_agent:toggle(45, "vertical")
+  -- Pass the size here as well for good measure
+  pi_agent:toggle(80, "vertical")
 end
 
 function _pi_toggle_float()
@@ -345,6 +351,6 @@ function _pi_toggle_float()
 end
 EOF
 
-" --- NEW: Pi Toggle Keybindings ---
-nnoremap <silent><leader>ps <Cmd>lua _pi_toggle_sidebar()<CR>
-nnoremap <silent><leader>pf <Cmd>lua _pi_toggle_float()<CR>
+" --- NEW: ToggleTerm Keybindings ---
+nnoremap <silent>ttr <Cmd>lua _pi_toggle_sidebar()<CR>
+nnoremap <silent>ttf <Cmd>lua _pi_toggle_float()<CR>
