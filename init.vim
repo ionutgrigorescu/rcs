@@ -138,12 +138,12 @@ vnoremap > >gv^
 
 nnoremap <C-h> :noh<CR>
 
-map tb :TagbarToggle<CR>
+map <leader>tb :TagbarToggle<CR>
 "map so :SymbolsOutline<CR>
 " File Explorer:
-map nf :NERDTreeFind<CR>
-map nt :NERDTreeToggle<CR>
-map tl :TaskList<CR>
+map <leader>nf :NERDTreeFind<CR>
+map <leader>nt :NERDTreeToggle<CR>
+map <leader>tl :TaskList<CR>
 
 let g:NERDTreeNodeDelimiter = "\u00a0"
 "map <F3> :NERDTreeToggle<CR>
@@ -352,5 +352,5 @@ end
 EOF
 
 " --- NEW: ToggleTerm Keybindings ---
-nnoremap <silent>ttr <Cmd>lua _pi_toggle_sidebar()<CR>
-nnoremap <silent>ttf <Cmd>lua _pi_toggle_float()<CR>
+nnoremap <silent><leader>tpr <Cmd>lua _pi_toggle_sidebar()<CR>
+nnoremap <silent><leader>tpf <Cmd>lua _pi_toggle_float()<CR>
